@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>StopMat - Vamos aprender brincando</title>
 </head>
 <body>
 <header>
@@ -34,7 +35,7 @@
     </nav>
 
     <div class="container topCasaFina-bannerWrapper">
-        <div class="topCasaFina-banner">
+        <div class="stopMat-banner">
             <h1>StopMat</h1>
             <p>Aprenda matemática brincando!</p>
             <button class="btn btn-primary btn-lg">Vamos jogar</button>
@@ -58,7 +59,7 @@
                 </div>
                 <div id="primeiro-paragrafo" class="collapse in">
                     <div class="panel-body">
-                        <p>A ideia surgiu para facilitar o ensino.</p>
+                        <p>A ideia surgiu para facilitar o ensino de operações matemáticas para crianças do ensino fundamental.</p>
                     </div>
                 </div>
             </div>
@@ -100,70 +101,70 @@
 <section id="nossos-projetos" class="container">
     <h2 class="text-center">Aprendendo</h2>
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <figure class="thumbnail text-center backSoma">
                 <i class="fas fa-plus-square fa-7x"></i>
                 <figcaption class="caption">
                     <h3>Soma</h3>
                 </figcaption>
             </figure>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <figure class="thumbnail text-center backSubtracao">
                 <i class="fas fa-minus fa-7x"></i>
                 <figcaption class="caption">
                     <h3>Subtração</h3>
                 </figcaption>
             </figure>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <figure class="thumbnail text-center backDivisao">
                 <i class="fas fa-divide fa-7x"></i>
                 <figcaption class="caption">
                     <h3>Divisão</h3>
                 </figcaption>
             </figure>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <figure class="thumbnail text-center backMultiplicacao">
                 <i class="fas fa-times fa-7x"></i>
                 <figcaption class="caption">
                     <h3>Multiplicação</h3>
                 </figcaption>
             </figure>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
-                <i class="fas fa-superscript fa-7x"></i>
-                <figcaption class="caption">
-                    <h3>Ao quadrado</h3>
-                </figcaption>
-            </figure>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <figure class="thumbnail text-center backAntecessor">
                 <i class="fas fa-reply fa-7x"></i>
                 <figcaption class="caption">
                     <h3>Antecessor</h3>
                 </figcaption>
             </figure>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <figure class="thumbnail text-center backSucessor">
                 <i class="fas fa-share fa-7x"></i>
                 <figcaption class="caption">
                     <h3>Sucessor</h3>
                 </figcaption>
             </figure>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <figure class="thumbnail text-center">
-                <i class="fas fa-percentage fa-7x"></i>
-                <figcaption class="caption">
-                    <h3>Porcentagem</h3>
-                </figcaption>
-            </figure>
-        </div>
+<!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
+<!--            <figure class="thumbnail text-center">-->
+<!--                <i class="fas fa-superscript fa-7x"></i>-->
+<!--                <figcaption class="caption">-->
+<!--                    <h3>Ao quadrado</h3>-->
+<!--                </figcaption>-->
+<!--            </figure>-->
+<!--        </div>-->
+<!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
+<!--            <figure class="thumbnail text-center">-->
+<!--                <i class="fas fa-percentage fa-7x"></i>-->
+<!--                <figcaption class="caption">-->
+<!--                    <h3>Porcentagem</h3>-->
+<!--                </figcaption>-->
+<!--            </figure>-->
+<!--        </div>-->
 
     </div>
 </section>
@@ -190,12 +191,12 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th class="text-center">+20</th>
-                        <th class="text-center">-10</th>
-                        <th class="text-center">Sucessor</th>
-                        <th class="text-center">&sup2;(ao quadrado)</th>
-                        <th class="text-center">Antecessor</th>
-                        <th class="text-center">&divide;2</th>
+                        <th class="text-center backSoma">+20</th>
+                        <th class="text-center backSubtracao">-10</th>
+                        <th class="text-center backSucessor">Sucessor</th>
+                        <th class="text-center backMultiplicacao">x 2</th>
+                        <th class="text-center backAntecessor">Antecessor</th>
+                        <th class="text-center backDivisao">&divide;2</th>
                     </tr>
                     </thead>
                     <tbody>
