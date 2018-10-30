@@ -59,7 +59,8 @@
                 </div>
                 <div id="primeiro-paragrafo" class="collapse in">
                     <div class="panel-body">
-                        <p>A ideia surgiu para facilitar o ensino de operações matemáticas para crianças do ensino fundamental.</p>
+                        <p>A ideia surgiu para facilitar o ensino de operações matemáticas para crianças do ensino
+                            fundamental.</p>
                     </div>
                 </div>
             </div>
@@ -149,22 +150,22 @@
                 </figcaption>
             </figure>
         </div>
-<!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
-<!--            <figure class="thumbnail text-center">-->
-<!--                <i class="fas fa-superscript fa-7x"></i>-->
-<!--                <figcaption class="caption">-->
-<!--                    <h3>Ao quadrado</h3>-->
-<!--                </figcaption>-->
-<!--            </figure>-->
-<!--        </div>-->
-<!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
-<!--            <figure class="thumbnail text-center">-->
-<!--                <i class="fas fa-percentage fa-7x"></i>-->
-<!--                <figcaption class="caption">-->
-<!--                    <h3>Porcentagem</h3>-->
-<!--                </figcaption>-->
-<!--            </figure>-->
-<!--        </div>-->
+        <!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
+        <!--            <figure class="thumbnail text-center">-->
+        <!--                <i class="fas fa-superscript fa-7x"></i>-->
+        <!--                <figcaption class="caption">-->
+        <!--                    <h3>Ao quadrado</h3>-->
+        <!--                </figcaption>-->
+        <!--            </figure>-->
+        <!--        </div>-->
+        <!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
+        <!--            <figure class="thumbnail text-center">-->
+        <!--                <i class="fas fa-percentage fa-7x"></i>-->
+        <!--                <figcaption class="caption">-->
+        <!--                    <h3>Porcentagem</h3>-->
+        <!--                </figcaption>-->
+        <!--            </figure>-->
+        <!--        </div>-->
 
     </div>
 </section>
@@ -177,36 +178,76 @@
 			$data = filter_input_array( INPUT_POST, FILTER_DEFAULT );
 			if ( isset( $data ) ):
 
-                var_dump($data);
+				var_dump( $data );
+//                $i = 0;
+				//FAZ OS CÁLCULOS
+				//faz o loop com os dados enviados
+				foreach ( $data['num'] as $numero ):
 
-                //FAZ OS CÁLCULOS
-                //faz o loop com os dados enviados
+					$contNum = 0;
 
+					for ( $i = 0; $i <= 5; $i ++ ):
+
+						//verifica a resposta da soma
+						$respostaSoma = $numero + $data['soma'];
+
+						echo $data[ 'resp' . $contNum ][ $i ] . "<br>";
+
+						if ( $data[ 'resp' . $contNum ][ $i ] == $respostaSoma )
+							$pontuacao += 10;
+//						if($data['resp' . $contNum][$i] == res):
+
+					endfor;
+
+					$contNum++;
+
+				endforeach;
 
 
 			endif;
+
+			//define os números
+			$numeros = [
+				rand( 1, 20 ),
+				rand( 1, 20 ),
+				rand( 1, 20 ),
+				rand( 1, 20 )
+			];
+
+			//define os números das operações
+			$soma          = rand( 1, 50 );
+			$subtracao     = rand( 1, 10 );
+			$multiplicacao = rand( 1, 5 );
+			$divisao       = rand( 1, 3 );
+
 			?>
-            <form action="" method="post">
+            <form action="#jogo" method="post">
+                <!-- ENVIA OS DADOS DAS SOMAS -->
+                <input type="hidden" name="soma" value="<?= $soma ?>">
+                <input type="hidden" name="subtracao" value="<?= $subtracao ?>">
+                <input type="hidden" name="multiplicacao" value="<?= $multiplicacao ?>">
+                <input type="hidden" name="divisao" value="<?= $divisao ?>">
+
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th></th>
-                        <th class="text-center backSoma">+20</th>
-                        <th class="text-center backSubtracao">-10</th>
-                        <th class="text-center backSucessor">Sucessor</th>
-                        <th class="text-center backMultiplicacao">x 2</th>
-                        <th class="text-center backAntecessor">Antecessor</th>
-                        <th class="text-center backDivisao">&divide;2</th>
+                        <th width="50px"></th>
+                        <th class="text-center backSoma">+<?= $soma; ?></th>
+                        <th class="text-center backSubtracao">-<?= $subtracao ?></th>
+                        <th class="text-center backSucessor">Sucessor <i class="fas fa-share"></i></th>
+                        <th class="text-center backMultiplicacao">x<?= $multiplicacao ?></th>
+                        <th class="text-center backAntecessor"><i class="fas fa-reply"></i> Antecessor</th>
+                        <th class="text-center backDivisao">&divide;<?= $divisao ?></th>
                     </tr>
                     </thead>
                     <tbody>
 					<?php
 
-					for ( $i = 1; $i < 3; $i ++ ):
+					for ( $i = 0; $i < 3; $i ++ ):
 
-						$num = rand( 1, 20 );
+						$num = rand( 1, 12 );
 						?>
-                        <input type="hidden" name="num<?= $i; ?>" value="<?= $num; ?>">
+                        <input type="hidden" name="num[]" value="<?= $num; ?>">
                         <tr>
                             <td><?= $num; ?></td>
                             <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
