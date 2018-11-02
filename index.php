@@ -182,27 +182,41 @@
 //                $i = 0;
 				//FAZ OS CÁLCULOS
 				//faz o loop com os dados enviados
+                $pontuacao = 0;
+				$contNum = 0;
 				foreach ( $data['num'] as $numero ):
-
-					$contNum = 0;
 
 					for ( $i = 0; $i <= 5; $i ++ ):
 
 						//verifica a resposta da soma
 						$respostaSoma = $numero + $data['soma'];
+                        $respostaSub = $numero - $data['subtracao'];
+                        $respostaSucessor = $numero + 1;
+                        $respostaAntecessor = $numero - 1;
+                        $respostaMult = $numero * 2;
+                        $respostaDivisao = $numero / 2;
 
 						echo $data[ 'resp' . $contNum ][ $i ] . "<br>";
 
 						if ( $data[ 'resp' . $contNum ][ $i ] == $respostaSoma )
 							$pontuacao += 10;
-//						if($data['resp' . $contNum][$i] == res):
-
+						if($data['resp' . $contNum][$i] == $respostaSub)
+						    $pontuacao += 10;
+						if($data['resp' . $contNum][$i] == $respostaAntecessor)
+                            $pontuacao += 10;
+						if($data['resp' . $contNum][$i] == $respostaSucessor)
+						    $pontuacao += 10;
+						if($data['resp' . $contNum][$i] == $respostaMult)
+						    $pontuacao += 10;
+						if ($data['resp' . $contNum][$i] == $respostaDivisao)
+						    $pontuacao += 10;
 					endfor;
 
 					$contNum++;
 
 				endforeach;
 
+				echo "<h1>{$pontuacao}</h1>";
 
 			endif;
 
