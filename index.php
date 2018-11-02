@@ -182,37 +182,43 @@
 //                $i = 0;
 				//FAZ OS CÁLCULOS
 				//faz o loop com os dados enviados
-                $pontuacao = 0;
-				$contNum = 0;
+				$pontuacao = 0;
+				$contNum   = 0;
 				foreach ( $data['num'] as $numero ):
 
 					for ( $i = 0; $i <= 5; $i ++ ):
 
 						//verifica a resposta da soma
-						$respostaSoma = $numero + $data['soma'];
-                        $respostaSub = $numero - $data['subtracao'];
-                        $respostaSucessor = $numero + 1;
-                        $respostaAntecessor = $numero - 1;
-                        $respostaMult = $numero * 2;
-                        $respostaDivisao = $numero / 2;
+						$respostaSoma       = $numero + $data['soma'];
+						$respostaSub        = $numero - $data['subtracao'];
+						$respostaSucessor   = $numero + 1;
+						$respostaAntecessor = $numero - 1;
+						$respostaMult       = $numero * 2;
+						$respostaDivisao    = $numero / 2;
 
 						echo $data[ 'resp' . $contNum ][ $i ] . "<br>";
 
-						if ( $data[ 'resp' . $contNum ][ $i ] == $respostaSoma )
+						if ( $data[ 'resp' . $contNum ][0] == $respostaSoma ) {
 							$pontuacao += 10;
-						if($data['resp' . $contNum][$i] == $respostaSub)
-						    $pontuacao += 10;
-						if($data['resp' . $contNum][$i] == $respostaAntecessor)
-                            $pontuacao += 10;
-						if($data['resp' . $contNum][$i] == $respostaSucessor)
-						    $pontuacao += 10;
-						if($data['resp' . $contNum][$i] == $respostaMult)
-						    $pontuacao += 10;
-						if ($data['resp' . $contNum][$i] == $respostaDivisao)
-						    $pontuacao += 10;
+						}
+						if ( $data[ 'resp' . $contNum ][1] == $respostaSub ) {
+							$pontuacao += 10;
+						}
+						if ( $data[ 'resp' . $contNum ][2] == $respostaAntecessor ) {
+							$pontuacao += 10;
+						}
+						if ( $data[ 'resp' . $contNum ][3] == $respostaSucessor ) {
+							$pontuacao += 10;
+						}
+						if ( $data[ 'resp' . $contNum ][4] == $respostaMult ) {
+							$pontuacao += 10;
+						}
+						if ( $data[ 'resp' . $contNum ][5] == $respostaDivisao ) {
+							$pontuacao += 10;
+						}
 					endfor;
 
-					$contNum++;
+					$contNum ++;
 
 				endforeach;
 
