@@ -186,16 +186,49 @@
 				$contNum   = 0;
 				foreach ( $data['num'] as $numero ):
 
-					for ( $i = 0; $i <= 5; $i ++ ):
+//					for ( $i = 0; $i <= 5; $i ++ ):
 
 						//verifica a resposta da soma
 						$respostaSoma       = $numero + $data['soma'];
 						$respostaSub        = $numero - $data['subtracao'];
 						$respostaSucessor   = $numero + 1;
 						$respostaAntecessor = $numero - 1;
-						$respostaMult       = $numero * 2;
-						$respostaDivisao    = $numero / 2;
+						$respostaMult       = $numero * $data['multiplicacao'];
+						$respostaDivisao    = $numero / $data['divisao'];
 
+						echo $data[ 'resp'][ 0 ] . " - " . $respostaSoma . "<br>";
+						echo $data[ 'resp'][ 1 ] . " - " . $respostaSub . "<br>";
+						echo $data[ 'resp'][ 2 ] . " - " . $respostaSucessor . "<br>";
+						echo $data[ 'resp'][ 3 ] . " - " . $respostaMult . "<br>";
+						echo $data[ 'resp'][ 4 ] . " - " . $respostaAntecessor . "<br>";
+						echo $data[ 'resp'][ 5 ] . " - " . $respostaDivisao . "<br>";
+
+						if ( $data[ 'resp'][0] == $respostaSoma ) {
+							$pontuacao += 10;
+							echo "adicao<br>";
+						}
+						if ( $data[ 'resp'][1] == $respostaSub ) {
+							$pontuacao += 10;
+							echo "subtracao<br>";
+						}
+						if ( $data[ 'resp'][2] == $respostaSucessor ) {
+							$pontuacao += 10;
+							echo "antecessor<br>";
+						}
+						if ( $data[ 'resp'][3] == $respostaMult ) {
+							$pontuacao += 10;
+							echo "sucessor<br>";
+						}
+						if ( $data[ 'resp'][4] == $respostaAntecessor ) {
+							$pontuacao += 10;
+							echo "multiplicacao<br>";
+						}
+						if ( $data[ 'resp'][5] == $respostaDivisao ) {
+							$pontuacao += 10;
+							echo "divisao<br>";
+						}
+
+						/*
 						echo $data[ 'resp' . $contNum ][ $i ] . "<br>";
 
 						if ( $data[ 'resp' . $contNum ][0] == $respostaSoma ) {
@@ -216,7 +249,8 @@
 						if ( $data[ 'resp' . $contNum ][5] == $respostaDivisao ) {
 							$pontuacao += 10;
 						}
-					endfor;
+						*/
+//					endfor;
 
 					$contNum ++;
 
@@ -233,12 +267,28 @@
 				rand( 1, 20 ),
 				rand( 1, 20 )
 			];
+			//sorteia o número para o jogo
+			$numeroJogo = rand( 2, 12 );
 
 			//define os números das operações
 			$soma          = rand( 1, 50 );
-			$subtracao     = rand( 1, 10 );
+			$subtracao     = rand( 1, $numeroJogo );
 			$multiplicacao = rand( 1, 5 );
-			$divisao       = rand( 1, 3 );
+
+			//verifica se o número sorteado é par ou ímpar para determinar a divisão
+			if ( $numeroJogo % 2 == 0 ):
+				if ( $numeroJogo > 2 ):
+                    $num = ['2', '4'];
+				    $rand = array_rand($num, 1);
+					$divisao = $num[$rand];
+                else:
+	                $divisao = 2;
+				endif;
+			else:
+				$num = ['1', '3'];
+				$rand = array_rand($num, 1);
+				$divisao = $num[$rand];
+			endif;
 
 			?>
             <form action="#jogo" method="post">
@@ -263,21 +313,21 @@
                     <tbody>
 					<?php
 
-					for ( $i = 0; $i < 3; $i ++ ):
+					//					for ( $i = 0; $i < 3; $i ++ ):
 
-						$num = rand( 1, 12 );
-						?>
-                        <input type="hidden" name="num[]" value="<?= $num; ?>">
-                        <tr>
-                            <td><?= $num; ?></td>
-                            <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
-                            <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
-                            <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
-                            <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
-                            <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
-                            <td><input name="resp<?= $i; ?>[]" type="text" class="form-control"></td>
-                        </tr>
-					<?php endfor; ?>
+
+					?>
+                    <input type="hidden" name="num[]" value="<?= $numeroJogo; ?>">
+                    <tr>
+                        <td><?= $numeroJogo; ?></td>
+                        <td><input name="resp[]" type="text" class="form-control"></td>
+                        <td><input name="resp[]" type="text" class="form-control"></td>
+                        <td><input name="resp[]" type="text" class="form-control"></td>
+                        <td><input name="resp[]" type="text" class="form-control"></td>
+                        <td><input name="resp[]" type="text" class="form-control"></td>
+                        <td><input name="resp[]" type="text" class="form-control"></td>
+                    </tr>
+                    <!--					--><?php //endfor; ?>
                     </tbody>
                 </table>
 
