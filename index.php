@@ -28,7 +28,6 @@
                     <li><a href="#sobre-nos">Sobre Nós</a></li>
                     <li><a href="#aprendendo">Aprendendo</a></li>
                     <li><a href="#jogo">Vamos jogar</a></li>
-                    <!--                    <li><a href="#contato">Contato</a></li>-->
                 </ul>
             </div>
         </div>
@@ -161,16 +160,10 @@
 			$data        = filter_input_array( INPUT_POST, FILTER_DEFAULT );
 			if ( isset( $data ) ):
 
-//				var_dump( $data );
-//                $i = 0;
-				//FAZ OS CÁLCULOS
 				//faz o loop com os dados enviados
 				$pontuacao = 0;
 				$contNum = 0;
 				foreach ( $data['num'] as $numero ):
-
-//					for ( $i = 0; $i <= 5; $i ++ ):
-
 					//verifica a resposta da soma
 					$respostaSoma       = $numero + $data['soma'];
 					$respostaSub        = $numero - $data['subtracao'];
@@ -185,13 +178,6 @@
 					$respMult = $data['resp'][3];
 					$respAnt  = $data['resp'][4];
 					$respDiv  = $data['resp'][5];
-
-//					echo $data['resp'][0] . " - " . $respostaSoma . "<br>";
-//					echo $data['resp'][1] . " - " . $respostaSub . "<br>";
-//					echo $data['resp'][2] . " - " . $respostaSucessor . "<br>";
-//					echo $data['resp'][3] . " - " . $respostaMult . "<br>";
-//					echo $data['resp'][4] . " - " . $respostaAntecessor . "<br>";
-//					echo $data['resp'][5] . " - " . $respostaDivisao . "<br>";
 
 					if ( $data['resp'][0] == $respostaSoma ) {
 						$pontuacao   += 10;
@@ -217,30 +203,6 @@
 						$pontuacao += 10;
 						$classDiv  = 'success';
 					}
-
-					/*
-					echo $data[ 'resp' . $contNum ][ $i ] . "<br>";
-
-					if ( $data[ 'resp' . $contNum ][0] == $respostaSoma ) {
-						$pontuacao += 10;
-					}
-					if ( $data[ 'resp' . $contNum ][1] == $respostaSub ) {
-						$pontuacao += 10;
-					}
-					if ( $data[ 'resp' . $contNum ][2] == $respostaAntecessor ) {
-						$pontuacao += 10;
-					}
-					if ( $data[ 'resp' . $contNum ][3] == $respostaSucessor ) {
-						$pontuacao += 10;
-					}
-					if ( $data[ 'resp' . $contNum ][4] == $respostaMult ) {
-						$pontuacao += 10;
-					}
-					if ( $data[ 'resp' . $contNum ][5] == $respostaDivisao ) {
-						$pontuacao += 10;
-					}
-					*/
-//					endfor;
 
 					$contNum ++;
 
@@ -294,7 +256,8 @@
                     </tbody>
                 </table>
 
-                <a href="http://localhost/stopmat" class="btn btn-lg btn-success text-center">Jogar novamente</a>
+<!--                <a href="http://localhost/stopmat" class="btn btn-lg btn-success text-center">Jogar novamente</a>-->
+                <a href="http://localhost/stopmat/#jogo" class="btn btn-lg btn-success text-center">Jogar novamente</a>
 
 			<?php
 
@@ -325,11 +288,28 @@
 						$divisao = 2;
 					endif;
 				else:
-					$num     = [ '1', '3' ];
+                    switch ($numeroJogo):
+	                    case '3':
+		                    $num     = [ '1', '3' ];
+		                    break;
+                        case '5':
+	                        $num     = [ '1', '5' ];
+	                        break;
+                        case '7':
+	                        $num     = [ '1', '7' ];
+	                        break;
+                        case '9':
+	                        $num     = [ '1', '3', '9' ];
+	                        break;
+                        case '11':
+	                        $num     = [ '1', '11' ];
+	                        break;
+
+                    endswitch;
+//					$num     = [ '1', '3' ];
 					$rand    = array_rand( $num, 1 );
 					$divisao = $num[ $rand ];
 				endif;
-
 
 				?>
                 <form action="#jogo" method="post">
@@ -352,12 +332,6 @@
                         </tr>
                         </thead>
                         <tbody>
-						<?php
-
-						//					for ( $i = 0; $i < 3; $i ++ ):
-
-
-						?>
                         <input type="hidden" name="num[]" value="<?= $numeroJogo; ?>">
                         <tr>
                             <td><?= $numeroJogo; ?></td>
@@ -368,8 +342,6 @@
                             <td><input name="resp[]" type="text" class="form-control"></td>
                             <td><input name="resp[]" type="text" class="form-control"></td>
                         </tr>
-                        <!--					--><?php //endfor;
-						?>
                         </tbody>
                     </table>
 
@@ -396,5 +368,6 @@
 <script src="js/jquery.js"></script>
 <script src="js/navbar-animation-fix.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/stopmat.js"></script>
 </body>
 </html>
