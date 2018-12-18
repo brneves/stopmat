@@ -28,7 +28,7 @@
                     <li><a href="#sobre-nos">Sobre Nós</a></li>
                     <li><a href="#aprendendo">Aprendendo</a></li>
                     <li><a href="#jogo">Vamos jogar</a></li>
-<!--                    <li><a href="#contato">Contato</a></li>-->
+                    <!--                    <li><a href="#contato">Contato</a></li>-->
                 </ul>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="stopMat-banner">
             <h1>StopMat</h1>
             <p>Aprenda matemática brincando!</p>
-            <button class="btn btn-primary btn-lg">Vamos jogar</button>
+            <a href="#jogo" class="btn btn-primary btn-lg">Vamos jogar</a>
         </div>
     </div>
 
@@ -106,7 +106,7 @@
             <figure class="thumbnail text-center backSoma">
                 <i class="fas fa-plus-square fa-7x"></i>
                 <figcaption class="caption">
-                    <h3>Soma</h3>
+                    <h3>Adição</h3>
                 </figcaption>
             </figure>
         </div>
@@ -150,23 +150,6 @@
                 </figcaption>
             </figure>
         </div>
-        <!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
-        <!--            <figure class="thumbnail text-center">-->
-        <!--                <i class="fas fa-superscript fa-7x"></i>-->
-        <!--                <figcaption class="caption">-->
-        <!--                    <h3>Ao quadrado</h3>-->
-        <!--                </figcaption>-->
-        <!--            </figure>-->
-        <!--        </div>-->
-        <!--        <div class="col-sm-6 col-md-4 col-lg-3">-->
-        <!--            <figure class="thumbnail text-center">-->
-        <!--                <i class="fas fa-percentage fa-7x"></i>-->
-        <!--                <figcaption class="caption">-->
-        <!--                    <h3>Porcentagem</h3>-->
-        <!--                </figcaption>-->
-        <!--            </figure>-->
-        <!--        </div>-->
-
     </div>
 </section>
 
@@ -175,7 +158,7 @@
     <div class="row">
         <div class="col-md-12">
 			<?php
-			$data = filter_input_array( INPUT_POST, FILTER_DEFAULT );
+			$data        = filter_input_array( INPUT_POST, FILTER_DEFAULT );
 			if ( isset( $data ) ):
 
 //				var_dump( $data );
@@ -183,7 +166,7 @@
 				//FAZ OS CÁLCULOS
 				//faz o loop com os dados enviados
 				$pontuacao = 0;
-				$contNum   = 0;
+				$contNum = 0;
 				foreach ( $data['num'] as $numero ):
 
 //					for ( $i = 0; $i <= 5; $i ++ ):
@@ -211,16 +194,16 @@
 //					echo $data['resp'][5] . " - " . $respostaDivisao . "<br>";
 
 					if ( $data['resp'][0] == $respostaSoma ) {
-						$pontuacao += 10;
+						$pontuacao   += 10;
 						$classAdicao = 'success';
 					}
 					if ( $data['resp'][1] == $respostaSub ) {
 						$pontuacao += 10;
-						$classSub = 'success';
+						$classSub  = 'success';
 					}
 					if ( $data['resp'][2] == $respostaSucessor ) {
 						$pontuacao += 10;
-						$classSuc = 'success';
+						$classSuc  = 'success';
 					}
 					if ( $data['resp'][3] == $respostaMult ) {
 						$pontuacao += 10;
@@ -228,11 +211,11 @@
 					}
 					if ( $data['resp'][4] == $respostaAntecessor ) {
 						$pontuacao += 10;
-						$classAnt = 'success';
+						$classAnt  = 'success';
 					}
 					if ( $data['resp'][5] == $respostaDivisao ) {
 						$pontuacao += 10;
-						$classDiv = 'success';
+						$classDiv  = 'success';
 					}
 
 					/*
@@ -268,7 +251,8 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th colspan="3" class="text-center"><h1>Sua pontuação foi <strong><?= $pontuacao; ?></strong></h1></th>
+                        <th colspan="3" class="text-center"><h1>Sua pontuação foi <strong><?= $pontuacao; ?></strong>
+                            </h1></th>
                     </tr>
                     <tr>
                         <th>Operação</th>
@@ -277,32 +261,32 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="<?= isset($classAdicao) ? $classAdicao : 'danger'; ?>">
+                    <tr class="<?= isset( $classAdicao ) ? $classAdicao : 'danger'; ?>">
                         <td>Adição</td>
                         <td><?= $respSoma ?></td>
                         <td><?= $respostaSoma ?></td>
                     </tr>
-                    <tr class="<?= isset($classSub) ? $classSub : 'danger'; ?>">
+                    <tr class="<?= isset( $classSub ) ? $classSub : 'danger'; ?>">
                         <td>Subtração</td>
                         <td><?= $respSub ?></td>
                         <td><?= $respostaSub ?></td>
                     </tr>
-                    <tr class="<?= isset($classSuc) ? $classSuc : 'danger'; ?>">
+                    <tr class="<?= isset( $classSuc ) ? $classSuc : 'danger'; ?>">
                         <td>Sucessor</td>
                         <td><?= $respSuc ?></td>
                         <td><?= $respostaSucessor ?></td>
                     </tr>
-                    <tr class="<?= isset($classMult) ? $classMult : 'danger'; ?>">
+                    <tr class="<?= isset( $classMult ) ? $classMult : 'danger'; ?>">
                         <td>Multiplicação</td>
                         <td><?= $respMult ?></td>
                         <td><?= $respostaMult ?></td>
                     </tr>
-                    <tr class="<?= isset($classAnt) ? $classAnt : 'danger'; ?>">
+                    <tr class="<?= isset( $classAnt ) ? $classAnt : 'danger'; ?>">
                         <td>Antecessor</td>
                         <td><?= $respAnt ?></td>
                         <td><?= $respostaAntecessor ?></td>
                     </tr>
-                    <tr class="<?= isset($classDiv) ? $classDiv : 'danger'; ?>">
+                    <tr class="<?= isset( $classDiv ) ? $classDiv : 'danger'; ?>">
                         <td>Divisão</td>
                         <td><?= $respDiv ?></td>
                         <td><?= $respostaDivisao ?></td>
@@ -311,10 +295,10 @@
                 </table>
 
                 <a href="http://localhost/stopmat" class="btn btn-lg btn-success text-center">Jogar novamente</a>
-            
-				<?php
 
-			else: 
+			<?php
+
+			else:
 
 				//define os números
 				$numeros = [
@@ -399,108 +383,6 @@
         </div>
     </div>
 </section>
-
-<!--<section id="depoimentos">-->
-<!--<h2 class="titulo-depoimentos">Depoimentos de Clientes</h2>-->
-
-<!--<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">-->
-<!--&lt;!&ndash; Indicators &ndash;&gt;-->
-<!--<ol class="carousel-indicators">-->
-<!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>-->
-<!--<li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
-<!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
-<!--</ol>-->
-
-<!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
-<!--<div class="carousel-inner" role="listbox">-->
-<!--<figure class="item active">-->
-<!--<img src="img/depoimentos/projetos0.png" alt="Depoimento 0">-->
-<!--<figcaption class="carousel-caption">-->
-<!--<h3>Yuri Padilha</h3>-->
-<!--<p>Gostei muito e achei rápido o serviço.</p>-->
-<!--</figcaption>-->
-<!--</figure>-->
-<!--<figure class="item">-->
-<!--<img src="img/depoimentos/projetos1.png" alt="Depoimento 1">-->
-<!--<figcaption class="carousel-caption">-->
-<!--<h3>Fernando Stafaneni</h3>-->
-<!--<p>Excelente trabalho.</p>-->
-<!--</figcaption>-->
-<!--</figure>-->
-<!--<figure class="item">-->
-<!--<img src="img/depoimentos/projetos2.png" alt="Depoimento 2">-->
-<!--<figcaption class="carousel-caption">-->
-<!--<h3>Caio Sauzas</h3>-->
-<!--<p>Gostei, competência em primeiro lugar.</p>-->
-<!--</figcaption>-->
-<!--</figure>-->
-
-<!--</div>-->
-
-<!--&lt;!&ndash; Controls &ndash;&gt;-->
-<!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">-->
-<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-<!--<span class="sr-only">Previous</span>-->
-<!--</a>-->
-<!--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">-->
-<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-<!--<span class="sr-only">Next</span>-->
-<!--</a>-->
-<!--</div>-->
-<!--</section>-->
-
-<!--<div class="container">-->
-<!--<div class="row">-->
-<!--<section id="video" class="col-sm-6">-->
-<!--<h2>Vídeo Institucional</h2>-->
-<!--<div class="embed-responsive embed-responsive-16by9">-->
-<!--<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/lN-ggWn1a5w" frameborder="0" allowfullscreen></iframe>-->
-<!--</div>-->
-<!--</section>-->
-
-<!--<section id="contato" class="container col-sm-6">-->
-<!--<h2>Contato</h2>-->
-<!--<p>Entre em contato conosco.</p>-->
-
-<!--<form action="">-->
-<!--<div class="form-group">-->
-<!--<label for="contato-name">Nome:</label>-->
-<!--<input type="text" class="form-control" id="contato-name" placeholder="Seu nome">-->
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--<label for="contato-email">E-maik:</label>-->
-<!--<div class="input-group">-->
-<!--<div class="input-group-addon">@</div>-->
-<!--<input type="email" class="form-control" id="contato-email" placeholder="Seu e-mail">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="grupo-radio">-->
-<!--<div class="radio">-->
-<!--<label>-->
-<!--<input type="radio" name="tipo-pessoa" checked>Pessoa física-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="radio">-->
-<!--<label>-->
-<!--<input type="radio" name="tipo-pessoa">Pessoa Jurídica-->
-<!--</label>-->
-<!--</div>-->
-<!--</div>&lt;!&ndash;-->
-
-<!--&ndash;&gt;<select class="contato-select form-control">-->
-<!--<option disabled selected>Seleciona e solicitação</option>-->
-<!--<option>Casa</option>-->
-<!--<option>Apartamento</option>-->
-<!--<option>Mansão</option>-->
-<!--</select>-->
-
-<!--<button class="btn btn-primary" type="submit">Enviar</button>-->
-
-<!--</form>-->
-
-<!--</section>-->
-<!--</div>-->
-<!--</div>-->
 <footer>
     <address>
         <strong>StopMat</strong><br>
